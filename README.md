@@ -64,14 +64,12 @@ package com.example.app;  //REPLACE THIS WITH YOUR package name
 
 import android.app.Application;
 import com.parse.Parse;
-import com.parse.ParseCrashReporting;
 
 public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
 
-        ParseCrashReporting.enable(this);
         Parse.initialize(this, "YOUR_PARSE_APPID", "YOUR_PARSE_CLIENT_KEY");
     }
 }
