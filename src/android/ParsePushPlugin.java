@@ -75,7 +75,7 @@ public class ParsePushPlugin extends CordovaPlugin {
     private void registerDevice(final CallbackContext callbackContext, final JSONArray args) {
     	try {
             
-            Log.e(LOGTAG, "Loading Parse Push v1.8.0");
+            Log.e(LOGTAG, "Loading Parse Push v1.13.0");
 
             //
             //

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.apache.cordova.core.ParsePushPlugin" version="1.1.0">
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.apache.cordova.core.ParsePushPlugin" version="1.13.0">
     
     <name>ParsePushPlugin</name>
-    <description>Cordova plugin for Parse.com push notification v1.8.0</description>
+    <description>Cordova plugin for Parse.com push notification v1.13.0</description>
 
     <js-module src="www/cordova-plugin-parse.js" name="ParsePushPlugin">
         <clobbers target="ParsePushPlugin" />
@@ -47,9 +47,9 @@
           <uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
         </config-file>
 
-        <source-file src="src/android/parse-1.8.0/Parse-1.8.0.jar" target-dir="libs" framework="true" />
-        <source-file src="src/android/parse-1.8.0/ParseCrashReporting-1.8.0.jar" target-dir="libs" framework="true" />
-        <source-file src="src/android/parse-1.8.0/bolts-android-1.1.4.jar" target-dir="libs" framework="true" />
+        <source-file src="src/android/parse-1.13.0/Parse-1.13.0.jar" target-dir="libs" framework="true" />
+        <source-file src="src/android/parse-1.13.0/bolts-tasks-1.4.0.jar" target-dir="libs" framework="true" />
+        
         <source-file src="src/android/ParsePushPlugin.java" target-dir="src/org/apache/cordova/core" />
         <source-file src="src/android/ParsePushPluginReceiver.java" target-dir="src/org/apache/cordova/core" />      
      </platform>
