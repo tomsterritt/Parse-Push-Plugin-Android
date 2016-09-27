@@ -28,6 +28,7 @@ public class ParsePushPlugin extends CordovaPlugin {
     public static final String ACTION_GET_INSTALLATION_ID = "getInstallationId";
     public static final String ACTION_GET_INSTALLATION_OBJECT_ID = "getInstallationObjectId";
     public static final String ACTION_GET_SUBSCRIPTIONS = "getSubscriptions";
+    public static final String ACTION_PUT = "put";
     public static final String ACTION_SUBSCRIBE = "subscribe";
     public static final String ACTION_UNSUBSCRIBE = "unsubscribe";
     public static final String ACTION_RECEIVED = "received";
@@ -56,6 +57,10 @@ public class ParsePushPlugin extends CordovaPlugin {
         if (action.equals(ACTION_GET_SUBSCRIPTIONS)) {
             this.getSubscriptions(callbackContext);
             return true;
+        }
+        if (action.equals(ACTION_PUT)) {
+            this.put(callbackContext, args);
+            return true
         }
         if (action.equals(ACTION_SUBSCRIBE)) {
             this.subscribe(args.getString(0), callbackContext);
@@ -129,6 +134,20 @@ public class ParsePushPlugin extends CordovaPlugin {
                 callbackContext.success(subscriptions.toString());
             }
         });
+    }
+    
+    private void put(final CallbackContext callbackContext, final JSONArray args) {
+        final ParseInstallation parseInstallation = ParseInstallation.getCurrentInstallation();
+        
+        final JSONObject json = args.getJSONObject(0);
+        final String key = json.getString("key");
+        final String value = json.getString("value");
+        
+        parseInstallation.put(key, value); 
+
+        parseInstallation.saveInBackground();
+        
+        callbackContext.success();
     }
 
     private void subscribe(final String channel, final CallbackContext callbackContext) {

@@ -30,6 +30,16 @@ var ParsePushPlugin = {
             []
         );
     },
+    
+    put: function(key, value, successCallback, errorCallback) {
+        cordova.exec(
+            successCallback,
+            errorCallback,
+            'ParsePushPlugin',
+            'put',
+            [{key: key, value: value}]
+        );
+    },
 
     subscribe: function(channel, successCallback, errorCallback) {
         cordova.exec(
