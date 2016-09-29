@@ -137,17 +137,23 @@ public class ParsePushPlugin extends CordovaPlugin {
     }
     
     private void put(final CallbackContext callbackContext, final JSONArray args) {
-        final ParseInstallation parseInstallation = ParseInstallation.getCurrentInstallation();
+        try {
+            final ParseInstallation parseInstallation = ParseInstallation.getCurrentInstallation();
         
-        final JSONObject json = args.getJSONObject(0);
-        final String key = json.getString("key");
-        final String value = json.getString("value");
+            final JSONObject json = args.getJSONObject(0);
+            final String key = json.getString("key");
+            final String value = json.getString("value");
         
-        parseInstallation.put(key, value); 
+            parseInstallation.put(key, value); 
 
-        parseInstallation.saveInBackground();
+            parseInstallation.saveInBackground();
         
-        callbackContext.success();
+            callbackContext.success();
+        } catch (JSONException e) {
+            callbackContext.error("JSONException: " + e.toString());
+        } catch(Exception e){
+        	callbackContext.error(e.toString());
+        }
     }
 
     private void subscribe(final String channel, final CallbackContext callbackContext) {
